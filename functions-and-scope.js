@@ -1,5 +1,7 @@
-// Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken. Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
-// maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
+// Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken.
+// Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
+// maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen.
+// Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
@@ -14,7 +16,17 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
 
+let cumLaude = 0
+
+for (let i = 0 ; i < grades.length; i++){
+    if (grades[i] >= 8) {
+        cumLaude ++;
+    }
+}
+console.log(cumLaude);
+
 // ---- Verwachte uitkomst: 6
+
 
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
@@ -27,6 +39,17 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+function orderDiploma(arr){
+    let cumLaude = 0;
+
+    for (let i = 0 ; i < arr.length; i++){
+        if (arr[i] >= 8) {
+            cumLaude ++;
+        }
+    }
+    console.log('Er moeten ' + cumLaude + ' diploma\'s besteld worden.');
+}
+console.log(orderDiploma([6,7,8,3,0]));
 
 
 
@@ -41,7 +64,14 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 6.642857142857143
+// gemiddelde van 14 -1 cijfers
 
+let sum = 0
+for (let i = 0; i < grades.length; i++) {
+    sum += grades[i]
+}
+
+console.log(sum / grades.length)
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -53,7 +83,15 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function averageGrade(array){
+    let sum = 0
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i]
+    }
+    console.log((sum / array.length).toFixed(2));
+}
 
+console.log(averageGrade(grades))
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
@@ -72,6 +110,8 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 9
 
+console.log(Math.max(...grades))
+
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
@@ -82,3 +122,9 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+function highestGrade(ar){
+    console.log(Math.max(...ar))
+}
+
+console.log(highestGrade(grades))
