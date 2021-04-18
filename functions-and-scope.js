@@ -128,3 +128,5 @@ function highestGrade(ar){
 }
 
 console.log(highestGrade(grades))
+
+console.log("Dit is mijn pull request.")
